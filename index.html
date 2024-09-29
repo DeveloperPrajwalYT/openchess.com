@@ -4,11 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chess Game</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #181818;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #101010;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            max-width: 150px;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .play-section, .puzzle-section {
+            margin: 20px 0;
+        }
+
+        .play-info, .puzzle-info {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 15px;
+            width: 200px;
+            background-color: #333;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .blue-btn {
+            background-color: #007bff;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .btn:hover {
+            background-color: #555;
+        }
+
+        .footer {
+            margin-top: 20px;
+            background-color: #202020;
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <div class="navbar">
-        <img src="logo.png" alt="Chess Logo" class="logo">
+        <img src="https://pics.craiyon.com/2023-07-06/e63030fed9e541c8937cdd6ab7d1264d.webp" alt="Chess Logo" class="logo">
     </div>
 
     <div class="container">
@@ -34,6 +112,19 @@
         <span>Daily Games (0)</span>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        let playCount = 0;
+        let puzzleCount = 0;
+
+        document.getElementById("new-game").addEventListener("click", function() {
+            playCount++;
+            document.getElementById("play-count").textContent = playCount;
+        });
+
+        document.getElementById("solve-puzzle").addEventListener("click", function() {
+            puzzleCount++;
+            document.getElementById("puzzle-count").textContent = puzzleCount;
+        });
+    </script>
 </body>
 </html>
