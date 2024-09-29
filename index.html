@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Openchess</title>
+    <title>Chess Website</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
     <style>
         /* General Reset */
@@ -12,7 +12,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #1b1b1b; /* Dark background */
@@ -30,10 +30,37 @@
             padding: 10px 0;
             text-align: center;
             width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
         }
 
         header img {
             width: 150px;
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2a2a2a;
+            padding: 10px;
+            border-bottom: 2px solid #444;
+        }
+
+        .nav-bar button {
+            background-color: #e74c3c;
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            font-size: 16px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .nav-bar button:hover {
+            background-color: #c0392b;
         }
 
         /* Main content */
@@ -41,6 +68,7 @@
             width: 100%;
             max-width: 400px;
             padding: 20px;
+            padding-top: 100px; /* Offset to prevent overlap with header */
         }
 
         .card {
@@ -51,6 +79,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            cursor: pointer;
         }
 
         .card img {
@@ -119,33 +148,50 @@
             font-size: 16px;
             font-weight: 600;
         }
+
+        /* Close Button for Pop-up */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header with Nav Bar -->
     <header>
-        <img src="https://www.chess.com/bundles/web/images/offcanvas-logo.2946e86e.svg" alt="Chess Logo">
+        <img src="https://pics.craiyon.com/2023-07-06/e63030fed9e541c8937cdd6ab7d1264d.webp" alt="Chess Logo">
     </header>
+
+    <!-- Navigation Bar -->
+    <div class="nav-bar">
+        <button id="menuClose">X</button>
+    </div>
 
     <!-- Main Content -->
     <div class="main-container">
         <!-- Play Section -->
         <div class="card">
             <div class="card-text">
-                Play
-                <span>0</span>
+                Play <span id="playCount">0</span>
             </div>
-            <button>New Game</button>
+            <button id="playButton">New Game</button>
         </div>
 
         <!-- Play Bots -->
-        <div class="card">
+        <div class="card" id="playBots">
             <img src="https://img.icons8.com/ios-glyphs/30/000000/robot.png" alt="Bot">
             <div class="card-text">Play Bots</div>
         </div>
 
         <!-- Play a Friend -->
-        <div class="card">
+        <div class="card" id="playFriend">
             <img src="https://img.icons8.com/ios-glyphs/30/000000/handshake.png" alt="Friend">
             <div class="card-text">Play a Friend</div>
         </div>
@@ -153,10 +199,9 @@
         <!-- Puzzle Section -->
         <div class="puzzle">
             <div class="puzzle-text">
-                Puzzles
-                <span>412</span>
+                Puzzles <span id="puzzleCount">0</span>
             </div>
-            <button>Solve Puzzle</button>
+            <button id="solvePuzzleButton">Solve Puzzle</button>
         </div>
     </div>
 
@@ -164,5 +209,44 @@
     <div class="daily-games">
         <span>Daily Games (0)</span>
     </div>
+
+    <!-- Close button script -->
+    <script>
+        // Variables to store the count of games and puzzles
+        let playCount = 0;
+        let puzzleCount = 0;
+
+        // Elements that display the counts
+        const playCountElement = document.getElementById('playCount');
+        const puzzleCountElement = document.getElementById('puzzleCount');
+
+        // New Game button functionality
+        document.getElementById('playButton').addEventListener('click', () => {
+            playCount++;
+            playCountElement.textContent = playCount;
+        });
+
+        // Solve Puzzle button functionality
+        document.getElementById('solvePuzzleButton').addEventListener('click', () => {
+            puzzleCount++;
+            puzzleCountElement.textContent = puzzleCount;
+        });
+
+        // Close button functionality
+        document.getElementById('menuClose').addEventListener('click', () => {
+            alert("Close button clicked!");
+            // Add functionality here to close the nav/menu
+        });
+
+        // Play Bots button functionality
+        document.getElementById('playBots').addEventListener('click', () => {
+            alert("Play Bots clicked!");
+        });
+
+        // Play a Friend button functionality
+        document.getElementById('playFriend').addEventListener('click', () => {
+            alert("Play a Friend clicked!");
+        });
+    </script>
 </body>
 </html>
