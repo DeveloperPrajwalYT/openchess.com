@@ -1,1 +1,0 @@
-# openchess.com

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Openchess.net</title>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #theme-toggle {
+            background-color: #333;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 0.5em 1em;
+        }
+
+        #play-button {
+            background-color: #007bff;
+            border: none;
+            border-radius: 0.5em;
+            color: #fff;
+            cursor: pointer;
+            padding: 0.5em 1em;
+        }
+
+        #chess-selection {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 0.5em;
+            padding: 1em;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            display: none;
+        }
+
+        #chess1, #chess2, #chess3 {
+            background-color: #7a288a;
+            border: none;
+            border-radius: 0.5em;
+            color: #fff;
+            cursor: pointer;
+            padding: 0.5em 1em;
+            margin-bottom: 0.5em;
+        }
+
+        #close-button {
+            background-color: #ff0000;
+            border: none;
+            border-radius: 0.5em;
+            color: #fff;
+            cursor: pointer;
+            padding: 0.5em 1em;
+            position: absolute;
+            top: 0.5em;
+            right: 0.5em;
+        }
+
+        .blue-button {
+            background-color: #007bff;
+            border: none;
+            border-radius: 0.5em;
+            color: #fff;
+            cursor: pointer;
+            padding: 0.5em 1em;
+        }
+
+        .purple-button {
+            background-color: #7a288a;
+            border: none;
+            border-radius: 0.5em;
+            color: #fff;
+            cursor: pointer;
+            padding: 0.5em 1em;
+        }
+
+        .red-button {
+            background-color: #ff0000;
+            border: none;
+            border-radius: 0.5em;
+            color: #fff;
+            cursor: pointer;
+            padding: 0.5em 1em;
+        }
+
+        .nav-bar {
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .nav-bar button {
+            background-color: #333;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 0.5em 1em;
+            margin: 0 0.5em;
+        }
+
+        .nav-bar button:hover {
+            background-color: #444;
+        }
+
+        .settings-button {
+            background-color: #333;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 0.5em 1em;
+            position: absolute;
+            top: 0.5em;
+            right: 0.5em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <button id="play-button" class="blue-button">Play</button>
+        </nav>
+    </header>
+    <main>
+        <section id="chess-selection" class="hidden">
+            <button id="chess1" class="purple-button">Chess 1</button>
+            <button id="chess2" class="purple-button">Chess 2</button>
+            <button id="chess3" class="purple-button">Chess 3</button>
+            <button id="close-button" class="red-button">X</button>
+        </section>
+    </main>
+    <nav class="nav-bar">
+        <button id="settings-button">Settings</button>
+        <button id="discord-button">Discord</button>
+        <button id="theme-toggle">Toggle Theme</button>
